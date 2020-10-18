@@ -1,13 +1,13 @@
 class API
 
-  def self.list_movies
+  def self.fetch_movies
     url = "https://ghibliapi.herokuapp.com/films"
-    binding.pry
     uri = URI(url)
     response = Net::HTTP.get(uri)
-    movie_hash = JSON.parse(response)
+    binding.pry
+    movie_array = JSON.parse(response)
 
-    list_of_titles = movie_hash.each { |movie| movie["title"] }
+    list_of_titles = movie_array.each { |movie| puts movie["title"] }
     #use collect?
 
   end

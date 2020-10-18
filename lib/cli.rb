@@ -2,7 +2,7 @@ class CLI
 
   def start
     puts "Welcome, friend"
-    API.list_movies
+    API.fetch_movies
   end
 
 end
