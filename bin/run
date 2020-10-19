@@ -2,7 +2,7 @@
 
 require_relative "../environment"
 
-puts "kicking off!"
+#puts "kicking off!"
 
 cli_main = CLI.new
 cli_main.start

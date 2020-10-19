@@ -18,7 +18,7 @@ class API
       movie.description = movie_hash["description"]
 
     }
-    binding.pry
+    #binding.pry
   end
 
 end
