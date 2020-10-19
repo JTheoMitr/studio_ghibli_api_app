@@ -29,7 +29,10 @@ class CLI
 
   def display_list_of_movies
     sleep(1)
-    puts "ALL MOVIES"
+    puts "ALL MOVIES:"
+    Movie.all.each.with_index(1) { |movie, index|
+      puts "#{index}: #{movie.title}"
+    }
   end
 
 end
