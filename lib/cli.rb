@@ -18,11 +18,14 @@ class CLI
     sleep(1)
     puts " "
     puts "Would you like to see a list of our films?"
+    yes_for_list
+  end
+
+  def yes_for_list
+
     puts "Type 'yes' to see the list; hit any other key to exit"
 
     user_input = gets.strip.downcase
-
-    #if the user says yes
 
     if user_input == "yes" || user_input == "y"
       puts "Excellent!  Here you are:"
@@ -33,6 +36,7 @@ class CLI
     else
       puts "Okay, come back soon!"
       sleep(1)
+      exit(true)
     end
 
   end
@@ -55,6 +59,8 @@ class CLI
         puts " "
         movie_details(current_movie)
         sleep(3)
+        puts "Would you like to choose a different movie?"
+        yes_for_list
       else
         puts "Sorry, that is not a valid option"
         sleep(1)
