@@ -11,7 +11,6 @@ class CLI
     #greet user
     sleep(1)
     puts "Welcome to the world of Studio Ghibli!"
-    sleep(1)
   end
 
   def main_menu
@@ -48,22 +47,29 @@ class CLI
 
   def choose_a_movie
       puts "Please enter the number of the movie you're interested in learning more about"
-      user_input = gets.strip.to_i
-      if user_input
+      user_input = gets.strip.to_i - 1
+      current_movie = Movie.all[user_input]
+      if user_input.between?(0, Movie.all.length - 1)
         puts "Great Choice!"
         sleep(1)
         puts " "
-        puts "Movie Title: " + Movie.all[user_input].title
-        puts "Directed by " + Movie.all[user_input].director
-        puts "Released in " + Movie.all[user_input].release_date
-        puts "Rotten Tomatoes Score:  " + Movie.all[user_input].rotten_tomatoes
-        puts "Synopsis: " + Movie.all[user_input].description
+        movie_details(current_movie)
         sleep(3)
       else
-        puts "Sorry, please enter a number"
+        puts "Sorry, that is not a valid option"
+        sleep(1)
+        choose_a_movie
       end
         main_menu
 
+  end
+
+  def movie_details(movie)
+    puts "Movie Title: " + movie.title
+    puts "Directed by " + movie.director
+    puts "Released in " + movie.release_date
+    puts "Rotten Tomatoes Score:  " + movie.rotten_tomatoes
+    puts "Synopsis: " + movie.description
   end
 
 end
