@@ -86,12 +86,44 @@ class CLI
 
   end
 
+  def add_movie_to_playlist(movie)
+    puts "Would you like to add this movie to your playlist?"
+    user_input = gets.strip.downcase
+    if user_input == "yes" || user_input == "y"
+      add_to_playlist(movie)
+    elsif user input == "no" || user_input == "n"
+      puts "Ok, your playlist will remain as is."
+      all_or_playlist
+    else
+      puts "Sorry, I didn't catch that"
+      add_movie_to_playlist?(movie)
+    end
+
+  end
+
+  def add_to_playlist(movie)
+    if Movie.playlist.include?(movie)
+      sleep(1)
+      puts "This movie is already in your playlist"
+      sleep(1)
+    else
+      Movie.playlist << movie
+      sleep(1)
+      puts "OK, this movie has been added to your playlist"
+      sleep(1)
+    end
+    main_menu
+  end
+
   def movie_details(movie)
     puts "Movie Title: " + movie.title
     puts "Directed by " + movie.director
     puts "Released in " + movie.release_date
     puts "Rotten Tomatoes Score:  " + movie.rotten_tomatoes
     puts "Synopsis: " + movie.description
+    sleep(2)
+    puts " "
+    add_movie_to_playlist(movie)
   end
 
 end
