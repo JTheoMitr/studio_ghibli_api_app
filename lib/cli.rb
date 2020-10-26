@@ -74,6 +74,7 @@ class CLI
         puts " "
         movie_details(current_movie)
         sleep(3)
+        puts " "
         puts "Would you like to choose a different movie?"
         all_or_playlist
       else
