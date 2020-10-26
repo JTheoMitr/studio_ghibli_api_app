@@ -8,7 +8,6 @@ class CLI
   end
 
   def greeting
-    #greet user
     sleep(1)
     puts "Welcome to the world of Studio Ghibli!"
   end
@@ -17,7 +16,7 @@ class CLI
     #ask if they want to see a list of movies, main console
     sleep(1)
     puts " "
-    puts "Would you like to see a list of our films?"
+    puts "To view a library of our work:"
     all_or_playlist
   end
 
@@ -34,6 +33,7 @@ class CLI
       display_list_of_movies
       choose_a_movie
     elsif user_input == "playlist"
+      sleep(1)
       puts "Ok, here is your current playlist:"
       puts " "
       display_playlist
@@ -56,7 +56,7 @@ class CLI
   def display_playlist
     sleep(1)
     if Movie.playlist == []
-      puts "You have not added any movies to your playlist"
+      puts "There are no movies in your playlist"
       sleep(1)
       main_menu
     else
@@ -64,6 +64,7 @@ class CLI
       puts "#{index}: #{movie.title}"
     }
     sleep(1)
+    clear_playlist
     end
     main_menu
   end
@@ -91,7 +92,7 @@ class CLI
   end
 
   def add_movie_to_playlist?(movie)
-    puts "Would you like to add this movie to your playlist?"
+    puts "Would you like to add this movie to your playlist? (yes or no)"
     user_input = gets.strip.downcase
     if user_input == "yes" || user_input == "y"
       add_to_playlist(movie)
@@ -99,6 +100,7 @@ class CLI
       puts "Ok, your playlist will remain as is."
       all_or_playlist
     else
+      sleep(1)
       puts "Sorry, I didn't catch that"
       add_movie_to_playlist?(movie)
     end
@@ -116,6 +118,24 @@ class CLI
       puts "OK, this movie has been added to your playlist"
       sleep(1)
     end
+    main_menu
+  end
+
+  def clear_playlist
+    puts " "
+    puts "Would you like to clear your playlist? (yes or no)"
+    user_input = gets.strip.downcase
+    if user_input == "yes" || user_input == "y"
+    Movie.playlist.clear
+    puts "Playlist has been reset."
+    elsif user_input == "no" || user_input == "n"
+    puts "Ok, returning to main menu"
+    else
+      puts "Sorry, I didn't catch that"
+      clear_playlist
+    end
+
+    sleep(2)
     main_menu
   end
 
