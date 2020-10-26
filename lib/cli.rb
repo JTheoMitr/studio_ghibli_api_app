@@ -18,21 +18,24 @@ class CLI
     sleep(1)
     puts " "
     puts "Would you like to see a list of our films?"
-    yes_for_list
+    all_or_playlist
   end
 
-  def yes_for_list
+  def all_or_playlist
 
-    puts "Type 'yes' to see the list; hit any other key to exit"
+    puts "Type 'all' to see the full list of our movies, or 'playlist' to see your current playlist; hit any other key to exit"
 
     user_input = gets.strip.downcase
 
-    if user_input == "yes" || user_input == "y"
+    if user_input == "all"
       puts "Excellent!  Here you are:"
       #display list of movies
       sleep(1)
       display_list_of_movies
       choose_a_movie
+    elsif user_input == "playlist"
+      puts "Ok, here is your current playlist:"
+      display_playlist
     else
       puts "Okay, come back soon!"
       sleep(1)
@@ -49,6 +52,18 @@ class CLI
     }
   end
 
+  def display_playlist
+    sleep(1)
+    if Movie.playlist == []
+      puts "You have not added any movies to your playlist"
+      main_menu
+    else
+    Movie.playlist.each.with_index(1) { |movie, index|
+      puts "#{index}: #{movie.title}"
+    }
+    end
+  end
+
   def choose_a_movie
       puts "Please enter the number of the movie you're interested in learning more about"
       user_input = gets.strip.to_i - 1
@@ -60,7 +75,7 @@ class CLI
         movie_details(current_movie)
         sleep(3)
         puts "Would you like to choose a different movie?"
-        yes_for_list
+        all_or_playlist
       else
         puts "Sorry, that is not a valid option"
         sleep(1)
