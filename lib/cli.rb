@@ -35,6 +35,7 @@ class CLI
       choose_a_movie
     elsif user_input == "playlist"
       puts "Ok, here is your current playlist:"
+      puts " "
       display_playlist
     else
       puts "Okay, come back soon!"
@@ -56,12 +57,15 @@ class CLI
     sleep(1)
     if Movie.playlist == []
       puts "You have not added any movies to your playlist"
+      sleep(1)
       main_menu
     else
     Movie.playlist.each.with_index(1) { |movie, index|
       puts "#{index}: #{movie.title}"
     }
+    sleep(1)
     end
+    main_menu
   end
 
   def choose_a_movie
@@ -86,12 +90,12 @@ class CLI
 
   end
 
-  def add_movie_to_playlist(movie)
+  def add_movie_to_playlist?(movie)
     puts "Would you like to add this movie to your playlist?"
     user_input = gets.strip.downcase
     if user_input == "yes" || user_input == "y"
       add_to_playlist(movie)
-    elsif user input == "no" || user_input == "n"
+    elsif user_input == "no" || user_input == "n"
       puts "Ok, your playlist will remain as is."
       all_or_playlist
     else
@@ -123,7 +127,7 @@ class CLI
     puts "Synopsis: " + movie.description
     sleep(2)
     puts " "
-    add_movie_to_playlist(movie)
+    add_movie_to_playlist?(movie)
   end
 
 end
