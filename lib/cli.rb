@@ -3,36 +3,30 @@ class CLI
   def start
     puts "Fetching Data..."
     API.fetch_movies
-    self.greeting
+    sleep(1)
+    puts "Welcome to the world of Studio Ghibli!"
     self.main_menu
   end
 
-  def greeting
-    sleep(1)
-    puts "Welcome to the world of Studio Ghibli!"
-  end
-
   def main_menu
-    #ask if they want to see a list of movies, main console
+
     sleep(1)
     puts " "
-    puts "To view a library of our work:"
-    all_or_playlist
-  end
-
-  def all_or_playlist
-
-    puts "Type 'all' to see the full list of our movies, or 'playlist' to see your current playlist; hit any other key to exit"
+    puts "Type 'all' to see the full list of our movies"
+    puts "Type 'playlist' to see your current playlist"
+    puts "Type any other key to exit"
 
     user_input = gets.strip.downcase
 
     if user_input == "all"
-      puts "Excellent!  Here you are:"
-      #display list of movies
+      puts " "
+      puts "OK, here is our full library:"
       sleep(1)
+      puts " "
       display_list_of_movies
       choose_a_movie
     elsif user_input == "playlist"
+      puts " "
       sleep(1)
       puts "Ok, here is your current playlist:"
       puts " "
@@ -78,10 +72,6 @@ class CLI
         sleep(1)
         puts " "
         movie_details(current_movie)
-        sleep(3)
-        puts " "
-        puts "Would you like to choose a different movie?"
-        all_or_playlist
       else
         puts "Sorry, that is not a valid option"
         sleep(1)
@@ -98,7 +88,9 @@ class CLI
       add_to_playlist(movie)
     elsif user_input == "no" || user_input == "n"
       puts "Ok, your playlist will remain as is."
-      all_or_playlist
+      sleep(1)
+      puts " "
+      main_menu
     else
       sleep(1)
       puts "Sorry, I didn't catch that"
