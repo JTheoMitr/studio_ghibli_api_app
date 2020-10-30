@@ -6,8 +6,6 @@ class API
     response = Net::HTTP.get(uri)
     movie_array = JSON.parse(response)
 
-    #list_of_titles = movie_array.each { |movie| puts movie["title"] }
-
     movie_array.each { |movie_hash|
 
       movie = Movie.new
@@ -16,9 +14,8 @@ class API
       movie.release_date = movie_hash["release_date"]
       movie.rotten_tomatoes = movie_hash["rt_score"]
       movie.description = movie_hash["description"]
-
     }
-    #binding.pry
+
   end
 
 end

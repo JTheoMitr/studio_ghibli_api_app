@@ -43,7 +43,6 @@ class CLI
       puts "Sorry, I don't understand that command"
       main_menu
     end
-
   end
 
   def display_list_of_movies
@@ -103,7 +102,6 @@ class CLI
       puts "Sorry, I didn't catch that"
       add_movie_to_playlist?(movie)
     end
-
   end
 
   def add_to_playlist(movie)
@@ -133,7 +131,6 @@ class CLI
       puts "Sorry, I didn't catch that"
       clear_playlist
     end
-
     sleep(2)
     main_menu
   end
