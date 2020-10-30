@@ -14,7 +14,7 @@ class CLI
     puts " "
     puts "Type 'all' to see the full list of our movies"
     puts "Type 'playlist' to see your current playlist"
-    puts "Type any other key to exit"
+    puts "Type 'exit' to exit the application"
 
     user_input = gets.strip.downcase
 
@@ -31,10 +31,17 @@ class CLI
       puts "Ok, here is your current playlist:"
       puts " "
       display_playlist
-    else
+    elsif user_input == "exit"
+      puts " "
+      sleep(1)
       puts "Okay, come back soon!"
       sleep(1)
       exit(true)
+    else
+      puts " "
+      sleep(1)
+      puts "Sorry, I don't understand that command"
+      main_menu
     end
 
   end

@@ -26,7 +26,7 @@ https://github.com/JTheoMitr/studio_ghibli_api_app
 
 
 License
-—————
+-------
 
 This application is open source and available under terms designated by the MIT License:
 
