@@ -2,7 +2,7 @@ class API
 
   def self.fetch_movies
     url = "https://ghibliapi.herokuapp.com/films"
-    uri = URI(url)
+    uri = URI.parse(url)
     response = Net::HTTP.get(uri)
     movie_array = JSON.parse(response)
 

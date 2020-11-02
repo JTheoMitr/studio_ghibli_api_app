@@ -24,7 +24,7 @@ class CLI
       sleep(1)
       puts " "
       display_list_of_movies
-      choose_a_movie
+      choose_a_movie(Movie.all)
     elsif user_input == "playlist"
       puts " "
       sleep(1)
@@ -69,11 +69,11 @@ class CLI
     main_menu
   end
 
-  def choose_a_movie
+  def choose_a_movie(movie_list)
       puts "Please enter the number of the movie you're interested in learning more about"
       user_input = gets.strip.to_i - 1
-      current_movie = Movie.all[user_input]
-      if user_input.between?(0, Movie.all.length - 1)
+      current_movie = movie_list[user_input]
+      if user_input.between?(0, movie_list.length - 1)
         puts "Great Choice!"
         sleep(1)
         puts " "
@@ -81,7 +81,7 @@ class CLI
       else
         puts "Sorry, that is not a valid option"
         sleep(1)
-        choose_a_movie
+        choose_a_movie(movie_list)
       end
         main_menu
 
